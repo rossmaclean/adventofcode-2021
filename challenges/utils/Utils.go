@@ -8,11 +8,15 @@ import (
 )
 
 func ReadFileToIntSlice(filename string) []int {
+	return convertStringSliceToIntSlice(ReadFileToStringSlice(filename))
+}
+
+func ReadFileToStringSlice(filename string) []string {
 	b, err := ioutil.ReadFile(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
-	return convertStringSliceToIntSlice(strings.Split(string(b), "\n"))
+	return strings.Split(string(b), "\n")
 }
 
 func convertStringSliceToIntSlice(input []string) []int {
