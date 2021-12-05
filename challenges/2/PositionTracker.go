@@ -16,6 +16,10 @@ func main() {
 	log.Printf("Horizontal times depth with aim %d", resultWithAim)
 }
 
+const FORWARD = "forward"
+const UP = "up"
+const DOWN = "down"
+
 func performMovementsAndGetHorizontalTimesDepth(movements []string) int {
 	var horizontal = 0
 	var depth = 0
@@ -24,11 +28,11 @@ func performMovementsAndGetHorizontalTimesDepth(movements []string) int {
 		step := strings.Split(movement, " ")
 
 		switch step[0] {
-		case "forward":
+		case FORWARD:
 			horizontal += strToInt(step[1])
-		case "up":
+		case UP:
 			depth -= strToInt(step[1])
-		case "down":
+		case DOWN:
 			depth += strToInt(step[1])
 		}
 	}
@@ -44,13 +48,13 @@ func performMovementsAndGetHorizontalTimesDepthWithAim(movements []string) int {
 		step := strings.Split(movement, " ")
 
 		switch step[0] {
-		case "forward":
+		case FORWARD:
 			amount := strToInt(step[1])
 			horizontal += amount
 			depth += aim * amount
-		case "up":
+		case UP:
 			aim -= strToInt(step[1])
-		case "down":
+		case DOWN:
 			aim += strToInt(step[1])
 		}
 	}

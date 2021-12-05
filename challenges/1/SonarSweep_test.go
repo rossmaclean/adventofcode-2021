@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"adventofcode-2021/challenges/utils"
+	"testing"
+)
 
 func Test_getNumberOfIncreasesIndividual(t *testing.T) {
 	type args struct {
@@ -15,6 +18,13 @@ func Test_getNumberOfIncreasesIndividual(t *testing.T) {
 			name: "Get number of increases individual",
 			args: args{[]int{199, 200, 208, 210, 200, 207, 240, 269, 260, 263}},
 			want: 7,
+		},
+		{
+			name: "Get number of increases individual actual input",
+			args: args{
+				depths: utils.ReadFileToIntSlice("input"),
+			},
+			want: 1316,
 		},
 	}
 	for _, tt := range tests {
@@ -43,6 +53,14 @@ func Test_getNumberOfIncreasesSum(t *testing.T) {
 				numToSum: 3,
 			},
 			want: 5,
+		},
+		{
+			name: "Get number of increases sum actual input",
+			args: args{
+				depths:   utils.ReadFileToIntSlice("input"),
+				numToSum: 3,
+			},
+			want: 1344,
 		},
 	}
 	for _, tt := range tests {

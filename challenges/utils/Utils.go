@@ -30,3 +30,22 @@ func convertStringSliceToIntSlice(input []string) []int {
 	}
 	return convertedValues
 }
+
+func ConvertBinaryToDecimal(binary []int) int {
+	var mappings []int
+	for i := 0; i < len(binary); i++ {
+		if i == 0 {
+			mappings = append(mappings, 1)
+		} else {
+			mappings = append(mappings, mappings[i-1]*2)
+		}
+	}
+
+	value := 0
+	for i := len(binary) - 1; i >= 0; i-- {
+		if binary[i] == 1 {
+			value += mappings[(len(binary)-1)-i]
+		}
+	}
+	return value
+}

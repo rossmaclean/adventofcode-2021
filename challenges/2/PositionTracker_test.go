@@ -1,6 +1,7 @@
 package main
 
 import (
+	"adventofcode-2021/challenges/utils"
 	"reflect"
 	"testing"
 )
@@ -27,6 +28,12 @@ func Test_performMovementsAndGetHorizontalTimesDepth(t *testing.T) {
 				},
 			},
 			want: 150,
+		}, {
+			name: "Test perform movements and get horizontal times depth actual input",
+			args: args{
+				movements: utils.ReadFileToStringSlice("input"),
+			},
+			want: 1868935,
 		},
 	}
 	for _, tt := range tests {
@@ -60,6 +67,13 @@ func Test_performMovementsAndGetHorizontalTimesDepthWithAim(t *testing.T) {
 				},
 			},
 			want: 900,
+		},
+		{
+			name: "Test perform movements and get horizontal times depth with aim actual input",
+			args: args{
+				movements: utils.ReadFileToStringSlice("input"),
+			},
+			want: 1965970888,
 		},
 	}
 	for _, tt := range tests {
