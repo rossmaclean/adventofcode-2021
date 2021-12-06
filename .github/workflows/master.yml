@@ -1,0 +1,39 @@
+name: Master CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+
+jobs:
+  go_vet:
+    runs-on: ubuntu-latest
+    name: Go vet
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '1.17.3'
+      - run: go vet ./...
+
+  go_lint:
+    runs-on: ubuntu-latest
+    name: Go lint
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '1.17.3'
+      - run: echo "Should run lint here"
+
+  go_test:
+    runs-on: ubuntu-latest
+    name: Go test
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '1.17.3'
+      - run: go test ./...
