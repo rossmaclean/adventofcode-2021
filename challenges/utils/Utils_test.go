@@ -64,3 +64,47 @@ func TestConvertBinaryToDecimal1(t *testing.T) {
 		})
 	}
 }
+
+func TestContains(t *testing.T) {
+	type args struct {
+		s []int
+		e int
+	}
+	tests := []struct {
+		name string
+		args args
+		want bool
+	}{
+		{
+			name: "Contains 1",
+			args: args{
+				s: []int{1, 2, 3, 4, 5},
+				e: 8,
+			},
+			want: false,
+		},
+		{
+			name: "Contains 2",
+			args: args{
+				s: []int{5, 7, 8, 2, 1},
+				e: 3,
+			},
+			want: false,
+		},
+		{
+			name: "Contains 3",
+			args: args{
+				s: []int{1, 2, 3, 4, 5},
+				e: 3,
+			},
+			want: true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Contains(tt.args.s, tt.args.e); got != tt.want {
+				t.Errorf("Contains() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
